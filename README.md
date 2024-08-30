@@ -8,7 +8,8 @@ GitRadar code repository is developed for the coding challenge of PerX Senior So
 - Redux & Redux saga
 - Back-end: I followed [tutorial](https://www.youtube.com/watch?v=rRn2EisxPl4) to handle authentication.
 - Unit & Integration Test: Jest
-
+- Deployment: Vercel
+  
 Below is the challenge description: 
 
 ### 1. Challenge description
