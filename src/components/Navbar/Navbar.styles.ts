@@ -25,6 +25,8 @@ export const NavbarContainer = styled.div`
 
 export const SearchBarContainer = styled.div`
   flex: 1;
+  display: flex;
+  gap: 20px;
   max-width: 600px;
   margin-right: 20px;
 `;
@@ -58,4 +60,11 @@ export const GitHubLoginButton = styled(Button)`
     background: linear-gradient(135deg, #1890ff, #40a9ff);
     opacity: 0.9;
   }
+`;
+
+export const LogoTitle = styled.p`
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 18px;
 `;

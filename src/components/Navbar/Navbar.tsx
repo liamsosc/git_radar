@@ -1,12 +1,18 @@
-import React, { useCallback } from 'react';
-import { GithubOutlined, LogoutOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
+import React, { useCallback } from "react";
+import { GithubOutlined, LogoutOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 
-import { NavbarWrapper, NavbarContainer, SearchBarContainer, GitHubLoginButton } from './Navbar.styles';
-import { UserInput } from '../UserInput/UserInput';
-import { debounce } from '../../utils/debounce';
-import { loginWithGithub } from '../../utils/loginWithGithub';
-import { requestUser } from '../../redux/actions/users';
+import {
+  NavbarWrapper,
+  NavbarContainer,
+  SearchBarContainer,
+  GitHubLoginButton,
+  LogoTitle,
+} from "./Navbar.styles";
+import { UserInput } from "../UserInput/UserInput";
+import { debounce } from "../../utils/debounce";
+import { loginWithGithub } from "../../utils/loginWithGithub";
+import { requestUser } from "../../redux/actions/users";
 
 interface NavbarProps {
   isLogin: boolean;
@@ -15,7 +21,6 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
   const dispatch = useDispatch();
-
 
   const toggleAuth = () => {
     if (!isLogin) {
@@ -27,9 +32,9 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
 
   const debouncedSearchUserChange = useCallback(
     debounce((value: string) => {
-      if (!value) return; 
+      if (!value) return;
       dispatch(requestUser(value));
-    }, 300), 
+    }, 300),
     []
   );
 
@@ -41,12 +46,20 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
     <NavbarWrapper>
       <NavbarContainer>
         <SearchBarContainer>
+          <LogoTitle>GitRadar</LogoTitle>
           {isLogin && <UserInput handleChange={searchUserChange} />}
         </SearchBarContainer>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <GitHubLoginButton onClick={toggleAuth}>
-            {isLogin ? <span><LogoutOutlined /> Logout</span> : <span><GithubOutlined /> Login to GitHub</span>}
-
+            {isLogin ? (
+              <span>
+                <LogoutOutlined /> Logout
+              </span>
+            ) : (
+              <span>
+                <GithubOutlined /> Login to GitHub
+              </span>
+            )}
           </GitHubLoginButton>
         </div>
       </NavbarContainer>
