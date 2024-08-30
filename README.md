@@ -1,5 +1,7 @@
-# Demo
-[![PerX Coding Challenge: Demonstration](https://img.youtube.com/vi/dE_bY5yGhVY/0.jpg)](https://www.youtube.com/watch?v=dE_bY5yGhVY)
+# Gitradar
+
+#### Demo: 
+[![PerX Coding Challenge: Demonstration](![image](https://github.com/user-attachments/assets/bec9101e-5dc5-4c7b-8971-028b38342e46))](https://www.youtube.com/watch?v=dE_bY5yGhVY)
 
 ### 0. Introduction
 
