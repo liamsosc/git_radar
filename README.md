@@ -1,6 +1,6 @@
 ### 0. Introduction
 
-GitRadar code repository is developed for Senior Software Engineer interview coding challenge. 
+GitRadar code repository is developed for the coding challenge of PerX Senior Software Engineer interview  
 
 #### Technologies I used:
 - React.js latest version (v19)
