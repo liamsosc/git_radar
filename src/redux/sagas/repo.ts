@@ -12,7 +12,7 @@ import { pendingRepos, rejectRepos, responseRepos } from "../actions/repos";
 
 type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
-function* callSagaRepository(action: ActionTypes): SagaGenerator {
+export function* callSagaRepository(action: ActionTypes): SagaGenerator {
   try {
     yield put(pendingRepos());
     const response = yield call(getRepositoryAPI, action.data);

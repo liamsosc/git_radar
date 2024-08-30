@@ -7,7 +7,7 @@ GitRadar code repository is developed for the coding challenge of PerX Senior So
 - Styled components & Ant Design
 - Redux & Redux saga
 - Back-end: I followed [tutorial](https://www.youtube.com/watch?v=rRn2EisxPl4) to handle authentication.
-- Unit & Integration Test: Cypress
+- Unit & Integration Test: Jest
 
 Below is the challenge description: 
 

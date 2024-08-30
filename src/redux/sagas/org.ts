@@ -12,7 +12,7 @@ import { pendingOrgs, rejectOrgs, responseOrgs } from "../actions/orgs";
 
 type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
-function* callSagaOrganization(action: ActionTypes): SagaGenerator {
+export function* callSagaOrganization(action: ActionTypes): SagaGenerator {
   try {
     yield put(pendingOrgs());
     const response = yield call(getOrganizationAPI, action.data);

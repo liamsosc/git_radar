@@ -12,7 +12,7 @@ import { getUserInfoAPI } from "../api/github";
 
 type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
-function* callSagaUser(action: ActionTypes): SagaGenerator {
+export function* callSagaUser(action: ActionTypes): SagaGenerator {
   try {
     yield put(pendingUser());
     const response = yield call(getUserInfoAPI, action.data);
