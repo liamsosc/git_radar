@@ -1,5 +1,5 @@
 # Demo
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dE_bY5yGhVY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![PerX Coding Challenge: Demonstration](https://img.youtube.com/vi/dE_bY5yGhVY/0.jpg)](https://www.youtube.com/watch?v=dE_bY5yGhVY)
 
 ### 0. Introduction
 
