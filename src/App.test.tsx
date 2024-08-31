@@ -24,7 +24,7 @@ describe('callSagaUser Saga', () => {
     const generator = callSagaUser(action);
 
     expect(generator.next().value).toEqual(put(pendingUser()));
-    expect(generator.next().value).toEqual(call(getUserInfoAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetUserInfoAPI, action.data));
     expect(generator.next(response).value).toEqual(put(responseUser(response)));
     expect(generator.next().done).toBe(true);
   });
@@ -34,7 +34,7 @@ describe('callSagaUser Saga', () => {
     const generator = callSagaUser(action);
 
     expect(generator.next().value).toEqual(put(pendingUser()));
-    expect(generator.next().value).toEqual(call(getUserInfoAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetUserInfoAPI, action.data));
     expect(generator.throw(error).value).toEqual(put(rejectUser(error)));
     expect(generator.next().done).toBe(true);
   });
@@ -57,7 +57,7 @@ describe('callSagaUser Saga', () => {
     const generator = callSagaUser(action);
 
     expect(generator.next().value).toEqual(put(pendingUser()));
-    expect(generator.next().value).toEqual(call(getUserInfoAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetUserInfoAPI, action.data));
     expect(generator.next(response).value).toEqual(put(responseUser(response)));
     expect(generator.next().done).toBe(true);
   });
@@ -67,7 +67,7 @@ describe('callSagaUser Saga', () => {
     const generator = callSagaUser(action);
 
     expect(generator.next().value).toEqual(put(pendingUser()));
-    expect(generator.next().value).toEqual(call(getUserInfoAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetUserInfoAPI, action.data));
     expect(generator.throw(error).value).toEqual(put(rejectUser(error)));
     expect(generator.next().done).toBe(true);
   });
@@ -90,7 +90,7 @@ describe('callSagaRepositories Saga', () => {
     const generator = callSagaRepository(action);
 
     expect(generator.next().value).toEqual(put(pendingRepos()));
-    expect(generator.next().value).toEqual(call(getRepositoryAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetRepositoriesAPI, action.data));
     expect(generator.next(response).value).toEqual(put(responseRepos(response)));
     expect(generator.next().done).toBe(true);
   });
@@ -100,7 +100,7 @@ describe('callSagaRepositories Saga', () => {
     const generator = callSagaRepository(action);
 
     expect(generator.next().value).toEqual(put(pendingRepos()));
-    expect(generator.next().value).toEqual(call(getRepositoryAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetRepositoriesAPI, action.data));
     expect(generator.throw(error).value).toEqual(put(rejectRepos(error)));
     expect(generator.next().done).toBe(true);
   });
@@ -114,7 +114,7 @@ describe('callSagaOrganizations Saga', () => {
     const generator = callSagaOrganization(action);
 
     expect(generator.next().value).toEqual(put(pendingOrgs()));
-    expect(generator.next().value).toEqual(call(getOrganizationAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetOrganizationsAPI, action.data));
     expect(generator.next(response).value).toEqual(put(responseOrgs(response)));
     expect(generator.next().done).toBe(true);
   });
@@ -124,7 +124,7 @@ describe('callSagaOrganizations Saga', () => {
     const generator = callSagaOrganization(action);
 
     expect(generator.next().value).toEqual(put(pendingOrgs()));
-    expect(generator.next().value).toEqual(call(getOrganizationAPI, action.data));
+    expect(generator.next().value).toEqual(call(mockedGetOrganizationsAPI, action.data));
     expect(generator.throw(error).value).toEqual(put(rejectOrgs(error)));
     expect(generator.next().done).toBe(true);
   });

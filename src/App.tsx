@@ -2,17 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Content } from "./components/Container/Container";
 import { Navbar } from "./components/Navbar/Navbar";
-import { OrganizationReducer, RepoReducer, UserReducer } from "./types";
-import { OrganizationsSection } from "./components/OrganizationsSection/OrganizationSection";
-import { RepositoriesSection } from "./components/RepositoriesSection/RepositoriesSection";
 import { message, Spin } from "antd";
-import { UserProfile } from "./components/UserProfile/UserProfile";
-import { requestOrgs } from "./redux/actions/orgs";
-import { requestRepos } from "./redux/actions/repos";
+import { Profile } from "./components/UserProfile/Profile/Profile";
 import { useAuth } from "./hooks/useAuth";
-import { useSelector, useDispatch } from "react-redux";
-import NoDataSection from "./components/Shared/NoDataSection";
-import RequiredLoginSection from "./components/Shared/RequireLoginSection";
+import NoDataSection from "./components/Shared/NoData/NoDataSection";
+import RequiredLoginSection from "./components/Shared/RequiredLogin/RequireLoginSection";
+import { OrganizationsSection } from "./components/Organizations/OrganizationsSection/OrganizationSection";
+import { RepositoriesSection } from "./components/Repositories/RepositoriesSection/RepositoriesSection";
+import { useUser } from "./hooks/useUser";
+import { useRepo } from "./hooks/useRepo";
+import { useOrg } from "./hooks/useOrg";
 
 const AppContainer = styled.div`
   background: linear-gradient(to bottom right, #ff6f61, #ffcc70);
@@ -22,37 +21,16 @@ const AppContainer = styled.div`
 `;
 
 const App: React.FC = () => {
-  const dispatch = useDispatch();
   const { isLogin, logOut } = useAuth();
-
-  const {
-    user,
-    error: userError,
-    loading: userLoading,
-  } = useSelector((state: UserReducer) => state.user);
-  const {
-    repositories,
-    loading: repoLoading,
-    error: repoError,
-  } = useSelector((state: RepoReducer) => state.repository);
-  const {
-    organizations,
-    loading: orgLoading,
-    error: orgError,
-  } = useSelector((state: OrganizationReducer) => state.organization);
+  const { user, userError, userLoading } = useUser();
+  const { repositories, repoLoading, repoError } = useRepo();
+  const { organizations, orgLoading, orgError } = useOrg();
 
   React.useEffect(() => {
-    if (user?.login && !userError) {
-      dispatch(requestRepos(user.login));
-      dispatch(requestOrgs(user.login));
-    }
-  }, [user, userError, dispatch]);
-
-  React.useEffect(() => {
-    if (repoError?.message) message.error(repoError.message);
-    if (orgError?.message) message.error(orgError.message);
     if (userError?.message) message.error(userError.message);
-  }, [userError, repoError, orgError]);
+    if (repoError?.message) message.error(repoError.message);
+    if(orgError?.message) message.error(orgError.message);
+  }, [userError,repoError,orgError]);
 
   const renderContent = () => {
     if (isLogin) {
@@ -60,13 +38,13 @@ const App: React.FC = () => {
         return <Spin size="large" />;
       }
 
-      if (user.login === undefined) {
+      if (!user?.login) {
         return <NoDataSection />;
       }
 
       return (
         <>
-          <UserProfile profile={user} loading={userLoading} />
+          <Profile profile={user} loading={userLoading} />
           <RepositoriesSection
             repositories={repositories}
             loading={repoLoading}

@@ -8,7 +8,7 @@ import {
 const initialState: UserState = {
   user: {} as User,
   loading: false,
-  error: "",
+  error: {},
 };
 
 const userReducer = (

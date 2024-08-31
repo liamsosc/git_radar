@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { GithubOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 
@@ -30,13 +30,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
     }
   };
 
-  const debouncedSearchUserChange = useCallback(
-    debounce((value: string) => {
-      if (!value) return;
-      dispatch(requestUser(value));
-    }, 300),
-    []
-  );
+  const debouncedSearchUserChange = debounce((value: string) => {
+    if (!value) return;
+    dispatch(requestUser(value));
+  }, 300);
 
   const searchUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     debouncedSearchUserChange(e.target.value);
@@ -47,9 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
       <NavbarContainer>
         <SearchBarContainer>
           <LogoTitle>GitRadar</LogoTitle>
-          {isLogin && <UserInput handleChange={searchUserChange} />}
+          {isLogin && <UserInput handleChange={searchUserChange}/>}
         </SearchBarContainer>
-        <div style={{ display: "flex", alignItems: "center" }}>
           <GitHubLoginButton onClick={toggleAuth}>
             {isLogin ? (
               <span>
@@ -61,7 +57,6 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
               </span>
             )}
           </GitHubLoginButton>
-        </div>
       </NavbarContainer>
     </NavbarWrapper>
   );
