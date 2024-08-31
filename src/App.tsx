@@ -14,6 +14,7 @@ import {
 import { useAuth, useUser } from "./hooks";
 import useRepo from "./hooks/useRepo";
 import useOrg from "./hooks/useOrg";
+import CustomFooter from "./components/Footer/Footer";
 
 const AppContainer = styled.div`
   background: linear-gradient(to bottom right, #ff6f61, #ffcc70);
@@ -66,6 +67,7 @@ const App: React.FC = () => {
     <AppContainer>
       <Navbar isLogin={isLogin} logOutHandler={logOut} />
       <Content>{renderContent()}</Content>
+      <CustomFooter/>
     </AppContainer>
   );
 };

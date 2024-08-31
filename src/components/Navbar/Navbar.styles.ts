@@ -26,7 +26,7 @@ export const NavbarContainer = styled.div`
 export const SearchBarContainer = styled.div`
   flex: 1;
   display: flex;
-  gap: 20px;
+  gap: 14px;
   max-width: 600px;
   margin-right: 20px;
 `;
