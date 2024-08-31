@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button, Input } from "antd";
+import { RadarChartOutlined } from "@ant-design/icons";
 
 export const NavbarWrapper = styled.div`
   width: 100%;
@@ -21,14 +22,27 @@ export const NavbarContainer = styled.div`
   max-width: 1200px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+  }
 `;
 
 export const SearchBarContainer = styled.div`
   flex: 1;
   display: flex;
+  align-items: center;
   gap: 14px;
   max-width: 600px;
   margin-right: 20px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 10px;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 export const StyledInput = styled(Input)`
@@ -45,6 +59,11 @@ export const StyledInput = styled(Input)`
     border-color: #1890ff;
     box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
   }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 `;
 
 export const GitHubLoginButton = styled(Button)`
@@ -60,6 +79,12 @@ export const GitHubLoginButton = styled(Button)`
     background: linear-gradient(135deg, #1890ff, #40a9ff);
     opacity: 0.9;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 `;
 
 export const LogoTitle = styled.p`
@@ -67,4 +92,13 @@ export const LogoTitle = styled.p`
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 18px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+export const LogoIcon = styled(RadarChartOutlined)`
+  font-size: 30px;
+  color: #000;
 `;

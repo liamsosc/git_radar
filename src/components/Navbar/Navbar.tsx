@@ -1,5 +1,5 @@
 import React from "react";
-import { GithubOutlined, LogoutOutlined, RadarChartOutlined } from "@ant-design/icons";
+import { GithubOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 
 import * as NavbarStyles from "./Navbar.styles";
@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
     <NavbarStyles.NavbarWrapper>
       <NavbarStyles.NavbarContainer>
         <NavbarStyles.SearchBarContainer>
-        <RadarChartOutlined style={{ fontSize: "30px", color: "#000" }} />
+        <NavbarStyles.LogoIcon/>
           <NavbarStyles.LogoTitle>
             GitRadar
             </NavbarStyles.LogoTitle>
