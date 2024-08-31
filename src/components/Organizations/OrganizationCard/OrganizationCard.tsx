@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar, Card } from 'antd';
+
 import { OrgName } from './OrganizationCard.styles';
 import { OrganizationCardProps } from '../Organizations.types';
 

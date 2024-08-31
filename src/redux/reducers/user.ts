@@ -3,7 +3,7 @@ import {
   SEARCH_USER_PENDING,
   SEARCH_USER_REJECT,
   SEARCH_USER_SUCCESS,
-} from "../actions";
+} from "../actions/constants";
 
 const initialState: UserState = {
   user: {} as User,

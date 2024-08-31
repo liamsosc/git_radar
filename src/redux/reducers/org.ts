@@ -1,5 +1,5 @@
 import { ActionTypes, OrganizationState } from "../../types";
-import { FETCH_ORGANIZATIONS_PENDING, FETCH_ORGANIZATIONS_REJECT, FETCH_ORGANIZATIONS_SUCCESS } from "../actions";
+import { FETCH_ORGANIZATIONS_PENDING, FETCH_ORGANIZATIONS_REJECT, FETCH_ORGANIZATIONS_SUCCESS } from "../actions/constants";
 
 const initialState: OrganizationState = {
   organizations: [],

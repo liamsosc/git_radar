@@ -1,6 +1,3 @@
-import { ActionTypes } from "../../types";
-import { SEARCH_USER } from "../actions";
-import { pendingUser, rejectUser, responseUser } from "../actions/users";
 import {
   call,
   put,
@@ -8,17 +5,21 @@ import {
   CallEffect,
   PutEffect,
 } from "redux-saga/effects";
+
+import { ActionTypes } from "../../types";
+import { SEARCH_USER } from "../actions/constants";
 import { getUserInfoAPI } from "../api/github";
+import { userActions } from "../actions";
 
 type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
 export function* callSagaUser(action: ActionTypes): SagaGenerator {
   try {
-    yield put(pendingUser());
+    yield put(userActions.pendingUser());
     const response = yield call(getUserInfoAPI, action.data);
-    yield put(responseUser(response));
+    yield put(userActions.responseUser(response));
   } catch (error) {
-    yield put(rejectUser(error));
+    yield put(userActions.rejectUser(error));
   }
 }
 

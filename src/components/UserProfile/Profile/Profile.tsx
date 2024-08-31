@@ -7,15 +7,12 @@ import {
   FileTextOutlined,
 } from "@ant-design/icons";
 import { Spin } from "antd";
+
 import * as ProfileStyles from "./Profile.styles";
-import {  ProfileProps } from "../UserProfile.types";
+import { ProfileProps } from "../UserProfile.types";
 import { ProfileItem } from "../ProfileItem/ProfileItem";
 
-
-export const Profile: React.FC<ProfileProps> = ({
-  profile,
-  loading,
-}) => {
+const Profile: React.FC<ProfileProps> = ({ profile, loading }) => {
   const {
     avatar_url,
     html_url,
@@ -64,3 +61,5 @@ export const Profile: React.FC<ProfileProps> = ({
     </ProfileStyles.ProfileCard>
   );
 };
+
+export default Profile;

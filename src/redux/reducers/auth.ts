@@ -3,7 +3,7 @@ import {
   AUTHORIZE_SESSION_PENDING,
   AUTHORIZE_SESSION_REJECT,
   AUTHORIZE_SESSION_SUCCESS,
-} from "../actions";
+} from "../actions/constants";
 
 const initialState: AuthState = {
   accessToken: "",

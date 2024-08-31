@@ -1,13 +1,14 @@
 import React from 'react';
-import { Organization } from '../../../types';
 import { Spin, Typography } from 'antd';
+
+import { Organization } from '../../../types';
 import { CardContainer, Section, Title } from './OrganizationSection.styles';
 import { OrganizationCard } from '../OrganizationCard/OrganizationCard';
 import { OrganizationsSectionProps } from '../Organizations.types';
 
 
 
-export const OrganizationsSection: React.FC<OrganizationsSectionProps> = ({ organizations, loading }) => {
+const OrganizationsSection: React.FC<OrganizationsSectionProps> = ({ organizations, loading }) => {
   if (loading) return <Spin size="large" />;
 
   return (
@@ -21,3 +22,5 @@ export const OrganizationsSection: React.FC<OrganizationsSectionProps> = ({ orga
     </Section>
   );
 };
+
+export default OrganizationsSection;

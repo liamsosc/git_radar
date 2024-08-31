@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { RepoReducer } from "../types";
 import { message } from "antd";
 
-export const useRepo = () => {
+import { RepoReducer } from "../types";
+
+const useRepo = () => {
   const { repositories, loading: repoLoading, error: repoError } = useSelector(
     (state: RepoReducer) => state.repository
   );
@@ -16,3 +17,5 @@ export const useRepo = () => {
 
   return { repositories, repoLoading, repoError };
 };
+
+export default useRepo;

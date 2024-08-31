@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { OrganizationReducer } from "../types";
 import { message } from "antd";
 
-export const useOrg = () => {
+import { OrganizationReducer } from "../types";
+
+const useOrg = () => {
   const { organizations, loading: orgLoading, error: orgError } = useSelector(
     (state: OrganizationReducer) => state.organization
   );
@@ -16,3 +17,5 @@ export const useOrg = () => {
 
   return { organizations, orgLoading, orgError };
 };
+
+export default useOrg;

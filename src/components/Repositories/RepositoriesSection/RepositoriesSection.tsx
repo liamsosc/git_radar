@@ -4,7 +4,7 @@ import * as RepoSectionStyles from "./RepositoriesSection.styles";
 import { RepositoryCard } from "../RepositoriesCard/RepositoriesCard";
 import { RepositoriesSectionProps } from "../Repositories.types";
 
-export const RepositoriesSection: React.FC<RepositoriesSectionProps> = ({
+const RepositoriesSection: React.FC<RepositoriesSectionProps> = ({
   repositories,
   loading,
 }) => {
@@ -14,7 +14,10 @@ export const RepositoriesSection: React.FC<RepositoriesSectionProps> = ({
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentItems = useMemo(() => repositories.slice(startIndex, endIndex), [repositories, startIndex, endIndex]);
+  const currentItems = useMemo(
+    () => repositories.slice(startIndex, endIndex),
+    [repositories, startIndex, endIndex]
+  );
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -24,7 +27,9 @@ export const RepositoriesSection: React.FC<RepositoriesSectionProps> = ({
 
   return (
     <RepoSectionStyles.Section>
-      <RepoSectionStyles.SectionTitle>Repositories</RepoSectionStyles.SectionTitle>
+      <RepoSectionStyles.SectionTitle>
+        Repositories
+      </RepoSectionStyles.SectionTitle>
       {repositories.length > 0 ? (
         <>
           <RepoSectionStyles.CardContainer>
@@ -48,3 +53,5 @@ export const RepositoriesSection: React.FC<RepositoriesSectionProps> = ({
     </RepoSectionStyles.Section>
   );
 };
+
+export default RepositoriesSection;

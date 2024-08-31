@@ -3,30 +3,39 @@ import {
   AUTHORIZE_SESSION_PENDING,
   AUTHORIZE_SESSION_REJECT,
   AUTHORIZE_SESSION_SUCCESS,
-} from ".";
+} from "./constants";
 
-export const requestAuth = (data: any) => {
+const requestAuth = (data: any) => {
   return {
     type: AUTHORIZE_SESSION,
     data,
   };
 };
 
-export const responseAuth = (data: any) => {
+const responseAuth = (data: any) => {
   return {
     type: AUTHORIZE_SESSION_SUCCESS,
     data,
   };
 };
 
-export const rejectAuth = (data: any) => {
+const rejectAuth = (data: any) => {
   return {
     type: AUTHORIZE_SESSION_REJECT,
     data,
   };
 };
-export const pendingAuth = () => {
+const pendingAuth = () => {
   return {
     type: AUTHORIZE_SESSION_PENDING,
   };
 };
+
+const authActions = {
+  requestAuth,
+  responseAuth,
+  rejectAuth,
+  pendingAuth,
+};
+
+export default authActions;

@@ -1,6 +1,6 @@
 import { ActionTypes } from "../../types";
-import { AUTHORIZE_SESSION } from "../actions";
-import { pendingAuth, rejectAuth, responseAuth } from "../actions/auth";
+import { authActions } from "../actions";
+import { AUTHORIZE_SESSION } from "../actions/constants";
 import { getAccessTokenAPI } from "../api/auth";
 import {
   call,
@@ -14,11 +14,11 @@ type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
 function* callSagaAuth(action: ActionTypes): SagaGenerator {
   try {
-    yield put(pendingAuth());
+    yield put(authActions.pendingAuth());
     const response = yield call(getAccessTokenAPI, action.data);
-    yield put(responseAuth(response));
+    yield put(authActions.responseAuth(response));
   } catch (error) {
-    yield put(rejectAuth(error));
+    yield put(authActions.rejectAuth(error));
   }
 }
 

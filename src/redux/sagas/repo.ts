@@ -1,5 +1,3 @@
-import { ActionTypes } from "../../types";
-import { LIST_REPOSITORIES } from "../actions";
 import {
   call,
   put,
@@ -7,18 +5,21 @@ import {
   CallEffect,
   PutEffect,
 } from "redux-saga/effects";
+
+import { ActionTypes } from "../../types";
+import { LIST_REPOSITORIES } from "../actions/constants";
 import { getRepositoryAPI } from "../api/github";
-import { pendingRepos, rejectRepos, responseRepos } from "../actions/repos";
+import { repositoryActions } from "../actions";
 
 type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
 export function* callSagaRepository(action: ActionTypes): SagaGenerator {
   try {
-    yield put(pendingRepos());
+    yield put(repositoryActions.pendingRepos());
     const response = yield call(getRepositoryAPI, action.data);
-    yield put(responseRepos(response));
+    yield put(repositoryActions.responseRepos(response));
   } catch (error) {
-    yield put(rejectRepos(error));
+    yield put(repositoryActions.rejectRepos(error));
   }
 }
 

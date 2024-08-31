@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestAuth } from '../redux/actions/auth';
-import { AuthReducer } from '../types';
 import { message } from 'antd';
 
-export const useAuth = () => {
+import { AuthReducer } from '../types';
+import { authActions } from '../redux/actions';
+
+const useAuth = () => {
   const [isLogin, setIsLogin] = useState<boolean>(!!window.localStorage.getItem("accessToken"));
   const accessToken = useSelector((state: AuthReducer) => state.auth.accessToken);
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export const useAuth = () => {
       const codeParam = urlParams.get("code");
 
       if (codeParam) {
-        dispatch(requestAuth(codeParam));
+        dispatch(authActions.requestAuth(codeParam));
       }
     }
   }, [dispatch]);
@@ -42,3 +43,5 @@ export const useAuth = () => {
 
   return { isLogin, logOut };
 };
+
+export default useAuth;

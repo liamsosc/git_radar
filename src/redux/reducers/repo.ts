@@ -3,7 +3,7 @@ import {
   FETCH_REPOSITORIES_PENDING,
   FETCH_REPOSITORIES_REJECT,
   FETCH_REPOSITORIES_SUCCESS,
-} from "../actions";
+} from "../actions/constants";
 
 const initialState: RepositoryState = {
   repositories: [],

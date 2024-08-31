@@ -2,24 +2,14 @@ import React from "react";
 import { GithubOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 
-import {
-  NavbarWrapper,
-  NavbarContainer,
-  SearchBarContainer,
-  GitHubLoginButton,
-  LogoTitle,
-} from "./Navbar.styles";
+import * as NavbarStyles from "./Navbar.styles";
 import { UserInput } from "../UserInput/UserInput";
 import { debounce } from "../../utils/debounce";
 import { loginWithGithub } from "../../utils/loginWithGithub";
-import { requestUser } from "../../redux/actions/users";
+import { NavbarProps } from "./Navbar.types";
+import { userActions } from "../../redux/actions";
 
-interface NavbarProps {
-  isLogin: boolean;
-  logOutHandler: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
+const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
   const dispatch = useDispatch();
 
   const toggleAuth = () => {
@@ -32,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
 
   const debouncedSearchUserChange = debounce((value: string) => {
     if (!value) return;
-    dispatch(requestUser(value));
+    dispatch(userActions.requestUser(value));
   }, 300);
 
   const searchUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,13 +30,13 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
   };
 
   return (
-    <NavbarWrapper>
-      <NavbarContainer>
-        <SearchBarContainer>
-          <LogoTitle>GitRadar</LogoTitle>
+    <NavbarStyles.NavbarWrapper>
+      <NavbarStyles.NavbarContainer>
+        <NavbarStyles.SearchBarContainer>
+          <NavbarStyles.LogoTitle>GitRadar</NavbarStyles.LogoTitle>
           {isLogin && <UserInput handleChange={searchUserChange}/>}
-        </SearchBarContainer>
-          <GitHubLoginButton onClick={toggleAuth}>
+        </NavbarStyles.SearchBarContainer>
+          <NavbarStyles.GitHubLoginButton onClick={toggleAuth}>
             {isLogin ? (
               <span>
                 <LogoutOutlined /> Logout
@@ -56,8 +46,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isLogin, logOutHandler }) => {
                 <GithubOutlined /> Login to GitHub
               </span>
             )}
-          </GitHubLoginButton>
-      </NavbarContainer>
-    </NavbarWrapper>
+          </NavbarStyles.GitHubLoginButton>
+      </NavbarStyles.NavbarContainer>
+    </NavbarStyles.NavbarWrapper>
   );
 };
+
+export default Navbar;

@@ -1,5 +1,3 @@
-import { ActionTypes } from "../../types";
-import { LIST_ORGANIZATIONS } from "../actions";
 import {
   call,
   put,
@@ -7,18 +5,21 @@ import {
   CallEffect,
   PutEffect,
 } from "redux-saga/effects";
+
 import { getOrganizationAPI } from "../api/github";
-import { pendingOrgs, rejectOrgs, responseOrgs } from "../actions/orgs";
+import { organizationActions } from "../actions";
+import { ActionTypes } from "../../types";
+import { LIST_ORGANIZATIONS } from "../actions/constants";
 
 type SagaGenerator = Generator<CallEffect<any> | PutEffect<any>, void, any>;
 
 export function* callSagaOrganization(action: ActionTypes): SagaGenerator {
   try {
-    yield put(pendingOrgs());
+    yield put(organizationActions.pendingOrgs());
     const response = yield call(getOrganizationAPI, action.data);
-    yield put(responseOrgs(response));
+    yield put(organizationActions.responseOrgs(response));
   } catch (error) {
-    yield put(rejectOrgs(error));
+    yield put(organizationActions.rejectOrgs(error));
   }
 }
 
