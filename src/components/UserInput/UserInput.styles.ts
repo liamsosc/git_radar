@@ -15,7 +15,6 @@ export const InputContainer = styled.div`
 `;
 
 export const StyledInput = styled(Input)`
-  margin-bottom: 15px;
   width: 100%;
   border-radius: 25px;
   border: 2px solid #40a9ff;
