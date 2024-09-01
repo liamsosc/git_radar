@@ -41,7 +41,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 This command will scan the project's codebase and flag any issues related to code style, potential bugs, or deviations from the project's coding guidelines
 
-### 1. Challenge description
+### 3. Challenge description
 
 Using the [Github API](https://developer.github.com/v3/), create a web application that retrieves and displays the user's repositories and
 organizations that he/she belongs to in Github. And deploy the project somewhere
